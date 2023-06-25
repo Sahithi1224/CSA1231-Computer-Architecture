@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int operandA = 10;
+    int operandB = 5;
+    int result;
+
+    // Fetch Stage
+    result = operandA;
+
+    // Decode Stage
+    result = result + operandB;
+
+    // Execute Stage
+
+    printf("Result: %d\n", result);
+    printf("Total Clock Cycles: 3\n");
+
+    return 0;
+}
