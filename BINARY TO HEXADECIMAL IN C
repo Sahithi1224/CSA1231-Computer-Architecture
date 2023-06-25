@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to convert binary to hexadecimal
+void binaryToHexadecimal(char binary[]) {
+    // Pad the binary number with leading zeros if necessary
+    int len = strlen(binary);
+    int padding = len % 4;
+    if (padding != 0) {
+        padding = 4 - padding;
+        for (int i = 0; i < padding; i++) {
+            printf("0");
+        }
+    }
+    
+    // Iterate through the binary number, converting 4 bits at a time
+    for (int i = 0; i < len; i += 4) {
+        int decimal = 0;
+        for (int j = 0; j < 4; j++) {
+            decimal = decimal * 2 + (binary[i + j] - '0');
+        }
+        
+        // Convert decimal to hexadecimal digit
+        char hexadecimal;
+        if (decimal >= 0 && decimal <= 9) {
+            hexadecimal = decimal + '0';
+        } else {
+            hexadecimal = decimal - 10 + 'A';
+        }
+        
+        // Print the hexadecimal digit
+        printf("%c", hexadecimal);
+    }
+}
+
+int main() {
+    char binary[100];
+    
+    printf("Enter a binary number: ");
+    scanf("%s", binary);
+    
+    printf("Hexadecimal: ");
+    binaryToHexadecimal(binary);
+    
+    printf("\n");
+    
+    return 0;
+}
